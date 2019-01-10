@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2D236E6B21E7690700F6387F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236E6A21E7690700F6387F /* AppDelegate.swift */; };
-		2D236E6D21E7690700F6387F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236E6C21E7690700F6387F /* ViewController.swift */; };
-		2D236E7021E7690700F6387F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D236E6E21E7690700F6387F /* Main.storyboard */; };
+		2D236E6D21E7690700F6387F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236E6C21E7690700F6387F /* MainViewController.swift */; };
 		2D236E7221E7690900F6387F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D236E7121E7690900F6387F /* Assets.xcassets */; };
 		2D236E7521E7690900F6387F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D236E7321E7690900F6387F /* LaunchScreen.storyboard */; };
 		2D236E8021E7690900F6387F /* telstraPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236E7F21E7690900F6387F /* telstraPOCTests.swift */; };
 		2D236E8B21E7690900F6387F /* telstraPOCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236E8A21E7690900F6387F /* telstraPOCUITests.swift */; };
+		2D77D22A21E7746C00DA0C87 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D77D22921E7746C00DA0C87 /* DataTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +36,7 @@
 /* Begin PBXFileReference section */
 		2D236E6721E7690700F6387F /* telstraPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = telstraPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D236E6A21E7690700F6387F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2D236E6C21E7690700F6387F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2D236E6F21E7690700F6387F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2D236E6C21E7690700F6387F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2D236E7121E7690900F6387F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D236E7421E7690900F6387F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D236E7621E7690900F6387F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		2D236E8621E7690900F6387F /* telstraPOCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = telstraPOCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D236E8A21E7690900F6387F /* telstraPOCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = telstraPOCUITests.swift; sourceTree = "<group>"; };
 		2D236E8C21E7690900F6387F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D77D22921E7746C00DA0C87 /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				2D236E6A21E7690700F6387F /* AppDelegate.swift */,
-				2D236E6C21E7690700F6387F /* ViewController.swift */,
-				2D236E6E21E7690700F6387F /* Main.storyboard */,
+				2D236E6C21E7690700F6387F /* MainViewController.swift */,
+				2D77D22921E7746C00DA0C87 /* DataTableViewCell.swift */,
 				2D236E7121E7690900F6387F /* Assets.xcassets */,
 				2D236E7321E7690900F6387F /* LaunchScreen.storyboard */,
 				2D236E7621E7690900F6387F /* Info.plist */,
@@ -231,7 +231,6 @@
 			files = (
 				2D236E7521E7690900F6387F /* LaunchScreen.storyboard in Resources */,
 				2D236E7221E7690900F6387F /* Assets.xcassets in Resources */,
-				2D236E7021E7690700F6387F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +255,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D236E6D21E7690700F6387F /* ViewController.swift in Sources */,
+				2D236E6D21E7690700F6387F /* MainViewController.swift in Sources */,
+				2D77D22A21E7746C00DA0C87 /* DataTableViewCell.swift in Sources */,
 				2D236E6B21E7690700F6387F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,14 +293,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2D236E6E21E7690700F6387F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D236E6F21E7690700F6387F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2D236E7321E7690900F6387F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
