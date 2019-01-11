@@ -16,8 +16,8 @@ class MainViewController: UIViewController {
     let cellIdentifier = "cell"
     var viewRefresh: UIRefreshControl!
     var activityIndicator: UIActivityIndicatorView!
-    var dataArray: [DataModel] = []
     var apiCall: ApiCall!
+    var dataArray: [DataModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
         dataTableView.register(DataTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         dataTableView.delegate = self
         dataTableView.dataSource = self
-        dataTableView.rowHeight = 150
+        dataTableView.estimatedRowHeight = 150
         dataTableView.rowHeight = UITableView.automaticDimension
         dataTableView.separatorInset = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 10)
         dataTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -102,7 +102,7 @@ class MainViewController: UIViewController {
 //MARK: TableView function extension.
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,6 +110,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         if cell == nil{
             cell = DataTableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         }
+        let item = dataArray[indexPath.row]
+        cell?.setData(item)
         return cell!
     }
     
