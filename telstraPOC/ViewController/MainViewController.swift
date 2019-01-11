@@ -17,11 +17,14 @@ class MainViewController: UIViewController {
     var viewRefresh: UIRefreshControl!
     var activityIndicator: UIActivityIndicatorView!
     var dataArray: [DataModel] = []
+    var apiCall: ApiCall!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setView()
+        apiCall = ApiCall()
+        apiCall.delegate = self
         getData()
     }
     
@@ -67,9 +70,14 @@ class MainViewController: UIViewController {
         getData()
     }
     
+    func updateUI(_ data: NSDictionary){
+        
+    }
+    
     func getData(){
         if isDeviceReachable(){
             activityIndicator.startAnimating()
+            apiCall.requestData(URLString.dataURLString)
         }else{
             DispatchQueue.main.async {
                 weak var weakSelf = self
@@ -80,7 +88,7 @@ class MainViewController: UIViewController {
     }
 }
 
-//MARK: TableView function extension
+//MARK: TableView function extension.
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
@@ -93,9 +101,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         }
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
-//MARK: Alert
+//MARK: AlertView.
 extension MainViewController{
     func discoverAlert(_ title: String, _ message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -110,6 +122,24 @@ extension MainViewController{
     }
 }
 
+//MARK: API Call back.
+extension MainViewController: ApiCallDelegate{
+    func didRecieveResponse(_ data: NSDictionary?, _ code: Int?, _ error: Error?) {
+        if error == nil{
+            if let data = data{
+                updateUI(data)
+            }
+        }else{
+            DispatchQueue.main.async {
+                weak var weakSelf = self
+                weakSelf?.activityIndicator.stopAnimating()
+                weakSelf?.discoverAlert("API CALL Error", error?.localizedDescription ?? "")
+            }
+        }
+    }
+}
+
+//MARK: Reachability check.
 extension MainViewController{
     func isDeviceReachable() -> Bool{
         let reachability = Reachability()
