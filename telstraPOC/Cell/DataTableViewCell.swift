@@ -10,15 +10,15 @@ import UIKit
 
 class DataTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    private var dataImageView: UIImageView!
+    private var dataTitleLabel: UILabel!
+    private var dataDescriptionLabel: UILabel!
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        <#code#>
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder) has an implementation error!")
     }
-
 }

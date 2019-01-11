@@ -71,7 +71,18 @@ class MainViewController: UIViewController {
     }
     
     func updateUI(_ data: NSDictionary){
-        
+        DispatchQueue.main.async {
+            weak var weakSelf = self
+            weakSelf?.navigationItem.title = data["title"] as? String ?? ""
+            if let contentDataArray = data["model"] as? [DataModel]{
+                weakSelf?.dataArray = contentDataArray
+                weakSelf?.dataTableView.reloadData()
+                weakSelf?.activityIndicator.stopAnimating()
+                weakSelf?.viewRefresh.endRefreshing()
+            }else{
+                print("Error in data parsing")
+            }
+        }
     }
     
     func getData(){
