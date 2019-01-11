@@ -13,13 +13,13 @@ class MainViewController: UIViewController {
     //MARK: Variables
     var dataTableView: UITableView!
     let cellIdentifier = "cell"
+    var viewRefresh: UIRefreshControl!
     var activityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setView()
-        
     }
     
     //MARK: UISetup
@@ -32,10 +32,13 @@ class MainViewController: UIViewController {
         dataTableView.rowHeight = UITableView.automaticDimension
         dataTableView.separatorInset = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 10)
         dataTableView.translatesAutoresizingMaskIntoConstraints = false
+        viewRefresh = UIRefreshControl()
+        viewRefresh.attributedTitle = NSAttributedString(string: "Pull down to Refresh")
+        viewRefresh.addTarget(self, action: #selector(refreshHandler(_:)), for: .valueChanged)
         self.view.addSubview(dataTableView)
+        self.dataTableView.addSubview(viewRefresh)
         constraintsToTableView()
         setActivityIndicator()
-        
     }
 
     func constraintsToTableView(){
@@ -50,11 +53,15 @@ class MainViewController: UIViewController {
         activityIndicator.color = UIColor.darkGray
         activityIndicator.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.startAnimating()
         self.dataTableView.addSubview(activityIndicator)
-//        activityIndicator.centerXAnchor.constraint(equalTo: dataTableView.centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: dataTableView.centerYAnchor).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    @objc func refreshHandler(_ sender: UIRefreshControl){
+        
     }
 }
 
