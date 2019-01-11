@@ -46,18 +46,18 @@ class DataTableViewCell: UITableViewCell {
     }
     
     func addConstraints(){
-        dataImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        dataImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        dataImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        dataImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        dataImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -5).isActive = true
-        
         dataTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        dataTitleLabel.leadingAnchor.constraint(equalTo: dataImageView.trailingAnchor, constant: 10).isActive = true
+        dataTitleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
         dataTitleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         
-        dataDescriptionLabel.topAnchor.constraint(equalTo: dataTitleLabel.bottomAnchor, constant: 5).isActive = true
-        dataDescriptionLabel.leadingAnchor.constraint(equalTo: dataTitleLabel.leadingAnchor).isActive = true
+        dataImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
+        dataImageView.topAnchor.constraint(equalTo: dataTitleLabel.bottomAnchor, constant: 5).isActive = true
+        dataImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        dataImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        dataImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -7).isActive = true
+        
+        dataDescriptionLabel.topAnchor.constraint(equalTo: dataImageView.topAnchor).isActive = true
+        dataDescriptionLabel.leadingAnchor.constraint(equalTo: dataImageView.trailingAnchor, constant: 7).isActive = true
         dataDescriptionLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5).isActive = true
         dataDescriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -5).isActive = true
     }
