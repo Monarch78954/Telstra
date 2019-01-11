@@ -15,6 +15,12 @@
 		2D236E8021E7690900F6387F /* telstraPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236E7F21E7690900F6387F /* telstraPOCTests.swift */; };
 		2D236E8B21E7690900F6387F /* telstraPOCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236E8A21E7690900F6387F /* telstraPOCUITests.swift */; };
 		2D77D22A21E7746C00DA0C87 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D77D22921E7746C00DA0C87 /* DataTableViewCell.swift */; };
+		2DAB056A21E860B100554F4A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB056921E860B100554F4A /* DataModel.swift */; };
+		2DAB056D21E866C200554F4A /* ApiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB056C21E866C200554F4A /* ApiCall.swift */; };
+		2DAB056F21E867B700554F4A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB056E21E867B700554F4A /* NetworkManager.swift */; };
+		2DAB057221E868FD00554F4A /* Helping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB057121E868FD00554F4A /* Helping.swift */; };
+		2DAB057421E86D3500554F4A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB057321E86D3500554F4A /* Parser.swift */; };
+		2DAB057621E8716400554F4A /* URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB057521E8716400554F4A /* URLString.swift */; };
 		B3353DAC98FE5B4CBB456F1A /* Pods_telstraPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8723D1958672E8864C03CA2F /* Pods_telstraPOC.framework */; };
 		EAD78F1BCDEE89F65080803D /* Pods_telstraPOCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE4E2537D1B88C278A833C8 /* Pods_telstraPOCTests.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +56,12 @@
 		2D236E8A21E7690900F6387F /* telstraPOCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = telstraPOCUITests.swift; sourceTree = "<group>"; };
 		2D236E8C21E7690900F6387F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D77D22921E7746C00DA0C87 /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
+		2DAB056921E860B100554F4A /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		2DAB056C21E866C200554F4A /* ApiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCall.swift; sourceTree = "<group>"; };
+		2DAB056E21E867B700554F4A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		2DAB057121E868FD00554F4A /* Helping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helping.swift; sourceTree = "<group>"; };
+		2DAB057321E86D3500554F4A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		2DAB057521E8716400554F4A /* URLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLString.swift; sourceTree = "<group>"; };
 		5AE4E2537D1B88C278A833C8 /* Pods_telstraPOCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_telstraPOCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C498F96DEA083E954E0CD59 /* Pods_telstraPOCUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_telstraPOCUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		730219F48243E613F65F1118 /* Pods-telstraPOCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-telstraPOCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-telstraPOCTests/Pods-telstraPOCTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,9 +126,12 @@
 		2D236E6921E7690700F6387F /* telstraPOC */ = {
 			isa = PBXGroup;
 			children = (
+				2DAB057021E868DB00554F4A /* Supporting Files */,
+				2DAB056B21E866A200554F4A /* Network */,
+				2DAB056821E8608C00554F4A /* Data Models */,
+				2DAB056721E85FF200554F4A /* Cell */,
+				2DAB056621E85FDB00554F4A /* ViewController */,
 				2D236E6A21E7690700F6387F /* AppDelegate.swift */,
-				2D236E6C21E7690700F6387F /* MainViewController.swift */,
-				2D77D22921E7746C00DA0C87 /* DataTableViewCell.swift */,
 				2D236E7121E7690900F6387F /* Assets.xcassets */,
 				2D236E7321E7690900F6387F /* LaunchScreen.storyboard */,
 				2D236E7621E7690900F6387F /* Info.plist */,
@@ -140,6 +155,49 @@
 				2D236E8C21E7690900F6387F /* Info.plist */,
 			);
 			path = telstraPOCUITests;
+			sourceTree = "<group>";
+		};
+		2DAB056621E85FDB00554F4A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2D236E6C21E7690700F6387F /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2DAB056721E85FF200554F4A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2D77D22921E7746C00DA0C87 /* DataTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2DAB056821E8608C00554F4A /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB056921E860B100554F4A /* DataModel.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		2DAB056B21E866A200554F4A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB056C21E866C200554F4A /* ApiCall.swift */,
+				2DAB056E21E867B700554F4A /* NetworkManager.swift */,
+				2DAB057521E8716400554F4A /* URLString.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2DAB057021E868DB00554F4A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DAB057121E868FD00554F4A /* Helping.swift */,
+				2DAB057321E86D3500554F4A /* Parser.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		3EB5716ED040A06573E7B147 /* Frameworks */ = {
@@ -376,7 +434,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DAB056F21E867B700554F4A /* NetworkManager.swift in Sources */,
+				2DAB057221E868FD00554F4A /* Helping.swift in Sources */,
+				2DAB056D21E866C200554F4A /* ApiCall.swift in Sources */,
+				2DAB057621E8716400554F4A /* URLString.swift in Sources */,
 				2D236E6D21E7690700F6387F /* MainViewController.swift in Sources */,
+				2DAB057421E86D3500554F4A /* Parser.swift in Sources */,
+				2DAB056A21E860B100554F4A /* DataModel.swift in Sources */,
 				2D77D22A21E7746C00DA0C87 /* DataTableViewCell.swift in Sources */,
 				2D236E6B21E7690700F6387F /* AppDelegate.swift in Sources */,
 			);
@@ -549,7 +613,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D23VUK52AN;
 				INFOPLIST_FILE = telstraPOC/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wipropoc.telstraPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -565,7 +632,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D23VUK52AN;
 				INFOPLIST_FILE = telstraPOC/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wipropoc.telstraPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -582,7 +652,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D23VUK52AN;
 				INFOPLIST_FILE = telstraPOCTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wipropoc.telstraPOCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -600,7 +674,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D23VUK52AN;
 				INFOPLIST_FILE = telstraPOCTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wipropoc.telstraPOCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -617,7 +695,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D23VUK52AN;
 				INFOPLIST_FILE = telstraPOCUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wipropoc.telstraPOCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -634,7 +716,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D23VUK52AN;
 				INFOPLIST_FILE = telstraPOCUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wipropoc.telstraPOCUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Reachability
 
 class MainViewController: UIViewController {
     
@@ -15,11 +16,13 @@ class MainViewController: UIViewController {
     let cellIdentifier = "cell"
     var viewRefresh: UIRefreshControl!
     var activityIndicator: UIActivityIndicatorView!
+    var dataArray: [DataModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setView()
+        getData()
     }
     
     //MARK: UISetup
@@ -61,7 +64,19 @@ class MainViewController: UIViewController {
     }
     
     @objc func refreshHandler(_ sender: UIRefreshControl){
-        
+        getData()
+    }
+    
+    func getData(){
+        if isDeviceReachable(){
+            activityIndicator.startAnimating()
+        }else{
+            DispatchQueue.main.async {
+                weak var weakSelf = self
+                weakSelf?.activityIndicator.stopAnimating()
+                weakSelf?.discoverAlert("Connection Failed", "Please connect to Internet")
+            }
+        }
     }
 }
 
@@ -77,6 +92,32 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
             cell = DataTableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         }
         return cell!
+    }
+}
+
+//MARK: Alert
+extension MainViewController{
+    func discoverAlert(_ title: String, _ message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default) { (action) in
+            weak var weakSelf = self
+            if weakSelf?.viewRefresh.isRefreshing ?? true{
+                weakSelf?.viewRefresh.endRefreshing()
+            }
+        }
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension MainViewController{
+    func isDeviceReachable() -> Bool{
+        let reachability = Reachability()
+        if reachability?.connection.description != "No Connection"{
+            return true
+        }else{
+            return false
+        }
     }
 }
 
