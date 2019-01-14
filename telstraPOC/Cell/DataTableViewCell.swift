@@ -62,10 +62,13 @@ class DataTableViewCell: UITableViewCell {
         dataDescriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -5).isActive = true
     }
     
-    func setData(_ dataItem: DataModel){
-        self.dataTitleLabel.text = dataItem.rowTitle
-        self.dataDescriptionLabel.text = dataItem.rowDescription
+    func setData(_ dataItem: Row){
+        self.dataTitleLabel.text = dataItem.title ?? ""
+        self.dataDescriptionLabel.text = dataItem.description ?? ""
         let imageName = UIImage(named: "defaultImage")
-        self.dataImageView.sd_setImage(with: dataItem.rowImageURL, placeholderImage: imageName, options: [], progress: nil, completed: nil)
+        if dataItem.imageHref != nil{
+            let imageUrl = URL(string: dataItem.imageHref!)
+            self.dataImageView.sd_setImage(with: imageUrl, placeholderImage: imageName, options: [], progress: nil, completed: nil)
+        }
     }
 }

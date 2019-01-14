@@ -10,15 +10,15 @@ import UIKit
 import Foundation
 
 protocol ApiCallDelegate: class {
-    func didRecieveResponse(_ data: NSDictionary?, _ code: Int?, _ error: Error?)
+    func didRecieveResponse(_ data: DataModel?, _ code: Int?, _ error: Error?)
 }
 
 class ApiCall: NSObject {
     weak var delegate: ApiCallDelegate?
     func requestData(_ url: String){
-        NetworkManager.defaultManager.fetchDataFrom(url) { (data, response, error) in
+        NetworkManager.defaultManager.fetchDataFrom(url) { [weak self] (data, response, error) in
             let code = response?.statusCode
-            self.delegate?.didRecieveResponse(data as? NSDictionary, code, error)
+            self?.delegate?.didRecieveResponse(data as? DataModel, code, error)
         }
     }
 }

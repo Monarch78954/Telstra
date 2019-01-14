@@ -6,7 +6,6 @@
 //  Copyright © 2019 Monarch Bhardwaj. All rights reserved.
 //
 
-import UIKit
 import Foundation
 
 class URLString: NSObject {

@@ -17,11 +17,10 @@ class MainViewController: UIViewController {
     var viewRefresh: UIRefreshControl!
     var activityIndicator: UIActivityIndicatorView!
     var apiCall: ApiCall!
-    var dataArray: [DataModel] = []
+    var rowArray: [Row] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         setView()
         apiCall = ApiCall()
         apiCall.delegate = self
@@ -70,18 +69,14 @@ class MainViewController: UIViewController {
         getData()
     }
     
-    func updateUI(_ data: NSDictionary){
+    func updateUI(_ data: DataModel){
         DispatchQueue.main.async {
             weak var weakSelf = self
-            weakSelf?.navigationItem.title = data["title"] as? String ?? ""
-            if let contentDataArray = data["model"] as? [DataModel]{
-                weakSelf?.dataArray = contentDataArray
+            weakSelf?.navigationItem.title = data.title ?? ""
+                weakSelf?.rowArray = data.rows
                 weakSelf?.dataTableView.reloadData()
                 weakSelf?.activityIndicator.stopAnimating()
                 weakSelf?.viewRefresh.endRefreshing()
-            }else{
-                print("Error in data parsing")
-            }
         }
     }
     
@@ -102,7 +97,7 @@ class MainViewController: UIViewController {
 //MARK: TableView function extension.
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArray.count
+        return rowArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,7 +105,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         if cell == nil{
             cell = DataTableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         }
-        let item = dataArray[indexPath.row]
+        let item = rowArray[indexPath.row]
         cell?.setData(item)
         return cell!
     }
@@ -124,10 +119,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
 extension MainViewController{
     func discoverAlert(_ title: String, _ message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "OK", style: .default) { (action) in
-            weak var weakSelf = self
-            if weakSelf?.viewRefresh.isRefreshing ?? true{
-                weakSelf?.viewRefresh.endRefreshing()
+        let okButton = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
+            if self?.viewRefresh.isRefreshing ?? true{
+                self?.viewRefresh.endRefreshing()
             }
         }
         alert.addAction(okButton)
@@ -137,7 +131,7 @@ extension MainViewController{
 
 //MARK: API Call back.
 extension MainViewController: ApiCallDelegate{
-    func didRecieveResponse(_ data: NSDictionary?, _ code: Int?, _ error: Error?) {
+    func didRecieveResponse(_ data: DataModel?, _ code: Int?, _ error: Error?) {
         if error == nil{
             if let data = data{
                 updateUI(data)
